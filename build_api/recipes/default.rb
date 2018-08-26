@@ -19,5 +19,6 @@
 
 
 include_recipe "build_api::install"
+include_recipe "build_api::configure"
 include_recipe "build_api::build"
-include_recipe "build_api::start"
+include_recipe "build_api::pm2_start"
