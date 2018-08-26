@@ -17,14 +17,7 @@
 #     action :sync
 # end
 
-execute 'npm_install' do
-    command 'npm install'
-    action :nothing
-end
 
-execute 'npm_build' do
-    command 'npm run build'
-    action :nothing
-end
-
-include_recipe "build_api::conf"
+include_recipe "build_api::install"
+include_recipe "build_api::build"
+include_recipe "build_api::start"

@@ -1,6 +1,6 @@
-# garrett_build_api CHANGELOG
+# build_api CHANGELOG
 
-This file is used to list changes made in each version of the garrett_build_api cookbook.
+This file is used to list changes made in each version of the build_api cookbook.
 
 # 0.1.0
 

@@ -19,7 +19,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[garrett_build_api::default]
+      - recipe[build_api::default]
     verifier:
       inspec_tests:
         - test/integration/default
