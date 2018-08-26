@@ -1,4 +1,4 @@
-bash 'pm2_stop' do
+bash 'pm2_start' do
     user 'root'
     cwd "#{node['project']['path']}"
     code <<-EOH
