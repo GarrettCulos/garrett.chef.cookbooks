@@ -11,7 +11,7 @@ if !directory_exists?("#{node['project']['path']}/.git")
         git clone #{node['project']['path']} .
         EOH
     end
-else
+end
 
 execute 'git_pull' do 
     cwd "#{node['project']['path']}"
