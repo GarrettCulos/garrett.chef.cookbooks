@@ -1,7 +1,6 @@
-bash 'pm2_start' do
+execute 'pm2_start-restart' do
     user 'root'
     cwd "#{node['project']['path']}"
-    code <<-EOH
-    pm2 restart pm2.json
-    EOH
+    command 'pm2 restart pm2.json'
+    action :nothing
 end
