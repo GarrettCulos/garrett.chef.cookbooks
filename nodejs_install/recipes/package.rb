@@ -1,11 +1,21 @@
-execute 'apt-get update' do
+execute 'yum update' do
     user 'root'
-    command 'apt-get update'
+    command 'yum update'
     action :nothing
 end
 
-execute 'apt-get udpate' do
+execute 'yum install' do
     user 'root'
-    command 'apt-get install build-essential libssl-dev nodejs npm'
+    command 'yum install git'
     action :nothing
 end
+
+bash 'install_npm' do
+    cwd '/tmp'
+    code <<-EOH
+    curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+    sudo yum -y install nodejs
+    EOH
+end
+
+
