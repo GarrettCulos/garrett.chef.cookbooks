@@ -20,7 +20,7 @@ execute 'git_pull' do
 end
 
 execute 'npm_install' do
+    cwd "#{node['project']['path']}"
     command 'npm install'
     action :nothing
 end
-
