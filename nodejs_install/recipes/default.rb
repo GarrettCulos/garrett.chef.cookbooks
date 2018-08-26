@@ -3,6 +3,6 @@
 # Recipe:: default
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
-include_recipe "build_api::package"
-include_recipe "build_api::install_nvm"
-include_recipe "build_api::install_pm2"
+include_recipe "nodejs_install::package"
+include_recipe "nodejs_install::install_nvm"
+include_recipe "nodejs_install::install_pm2"
