@@ -22,5 +22,5 @@ end
 
 execute 'npm_install' do
     cwd "#{node['project']['path']}"
-    command 'npm install'
+    command 'sudo npm install'
 end
