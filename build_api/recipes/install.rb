@@ -15,6 +15,11 @@ if !directory_exists?("#{node['project']['path']}/.git")
     end
 end
 
+execute 'git_checkout' do 
+    cwd "#{node['project']['path']}"
+    command 'git checkout -- .'
+end
+
 execute 'git_pull' do 
     cwd "#{node['project']['path']}"
     command 'git pull origin master'
