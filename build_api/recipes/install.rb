@@ -3,12 +3,13 @@ def directory_exists?(directory)
 end
 
 if !directory_exists?("#{node['project']['path']}/.git")
-    bash 'git_clone' do
-        code <<-EOH
-        mkdir #{node['project']['path']}
-        cd #{node['project']['path']}
-        git clone #{node['project']['path']} .
-        EOH
+    execute 'mkdir' do 
+        cwd "/"
+        command "mkdir #{node['project']['path']}"
+    end
+    execute 'git_clone' do 
+        cwd "#{node['project']['path']}"
+        command "git clone #{node['project']['path']} ."
     end
 end
 
