@@ -7,15 +7,12 @@ end
 
 execute 'install_nvm.sh' do
     command './install_nvm.sh'
-    action :nothing
 end
 
 execute 'nvm_install' do
     command 'nvm install 9.11.0'
-    action :nothing
 end
 
 execute 'nvm_alias' do
     command 'nvm alias default 9.11.0'
-    action :nothing
 end

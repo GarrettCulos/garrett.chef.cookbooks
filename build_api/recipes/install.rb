@@ -16,11 +16,9 @@ end
 execute 'git_pull' do 
     cwd "#{node['project']['path']}"
     command 'git pull origin master'
-    action :nothing
 end
 
 execute 'npm_install' do
     cwd "#{node['project']['path']}"
     command 'npm install'
-    action :nothing
 end
