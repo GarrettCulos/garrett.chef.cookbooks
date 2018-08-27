@@ -3,5 +3,5 @@ execute 'cp_env' do
 end
 
 execute 'cp_pm2' do
-    command "cp #{node['project']['path']}/.pm2.default.json #{node['project']['path']}/.pm2.json"
+    command "cp #{node['project']['path']}/pm2.default.json #{node['project']['path']}/pm2.json"
 end
