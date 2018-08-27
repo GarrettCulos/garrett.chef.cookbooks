@@ -1,6 +1,5 @@
 def directory_exists?(directory)
-    return false if Dir[directory] == nil
-    true
+    File.directory?(directory)
 end
 
 if !directory_exists?("#{node['project']['path']}/.git")
