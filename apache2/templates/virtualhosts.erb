@@ -1,0 +1,9 @@
+<VirtualHost *:<%= @port %>>
+        ProxyPreserveHost On
+
+        ProxyPass "/"  "127.0.0.1:<%= @proxy_port %>"
+        ProxyPassReverse "/"  "127.0.0.1:<%= @proxy_port %>"
+
+        ServerName <%= @servername %>
+
+</VirtualHost>
