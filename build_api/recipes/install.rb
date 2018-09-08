@@ -11,7 +11,7 @@ if !directory_exists?("#{node['project']['path']}/.git")
 
     execute 'git_clone' do 
         cwd "#{node['project']['path']}"
-        command "git clone #{node['project']['repo']} ."
+        command "git clone https://#{node['project']['user']}:#{node['project']['password']}@#{node['project']['repo']} ."
     end
 end
 
