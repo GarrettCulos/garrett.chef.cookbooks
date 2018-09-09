@@ -7,14 +7,14 @@ service "httpd" do
 end
 
 # enabme these mods
-include_recipe "apache2::mod_proxy"
-include_recipe "apache2::mod_proxy_http"
-include_recipe "apache2::mod_proxy_ajp"
-include_recipe "apache2::mod_rewrite"
-include_recipe "apache2::mod_deflate"
-include_recipe "apache2::mod_headers"
-include_recipe "apache2::mod_proxy_connect"
-include_recipe "apache2::mod_proxy_html"
+# include_recipe "apache2::mod_proxy"
+# include_recipe "apache2::mod_proxy_http"
+# include_recipe "apache2::mod_proxy_ajp"
+# include_recipe "apache2::mod_rewrite"
+# include_recipe "apache2::mod_deflate"
+# include_recipe "apache2::mod_headers"
+# include_recipe "apache2::mod_proxy_connect"
+# include_recipe "apache2::mod_proxy_html"
 
 node["apache2"]["sites"].each do |sitename, data|
     document_root = "/var/www/#{sitename}"
@@ -24,7 +24,7 @@ node["apache2"]["sites"].each do |sitename, data|
       recursive true
     end
 
-    template "/etc/httpd/sites-available/#{sitename}.conf" do
+    template "/etc/httpd/conf.d/#{sitename}.conf" do
         source "virtualhosts.erb"
         mode "0644"
         variables(
@@ -35,10 +35,4 @@ node["apache2"]["sites"].each do |sitename, data|
         )
     end
 
-    execute 'link' do
-        cwd "/etc/httpd/sites-enabled"
-        command "ln -s ../sites-available/#{sitename}.conf"
-    end
-    
-
-  end
+end
