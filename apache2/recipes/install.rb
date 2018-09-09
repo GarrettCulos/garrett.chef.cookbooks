@@ -1,8 +1,8 @@
-package "apache2" do
+package "httpd" do
     action :install
 end
 
-service "apache2" do
+service "httpd" do
     action [:enable, :start]
 end
 
@@ -24,7 +24,7 @@ node["apache2"]["sites"].each do |sitename, data|
       recursive true
     end
 
-    template "/etc/apache2/sites-available/#{sitename}.conf" do
+    template "/etc/httpd/sites-available/#{sitename}.conf" do
         source "virtualhosts.erb"
         mode "0644"
         variables(
@@ -34,5 +34,11 @@ node["apache2"]["sites"].each do |sitename, data|
             :servername => data["servername"]
         )
     end
+
+    execute 'link' do
+        cwd "/etc/httpd/sites-enabled"
+        command "ln -s ../sites-available/#{sitename}.conf"
+    end
+    
 
   end
