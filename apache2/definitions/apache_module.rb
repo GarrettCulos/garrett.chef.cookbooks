@@ -18,25 +18,26 @@
 #
 
 define :apache_module, :enable => true, :conf => false do
-  
-    if params[:conf]
-      apache_conf params[:name]
+  include_recipe "apache2"
+
+  if params[:conf]
+    apache_conf params[:name]
+  end
+
+  if params[:enable]
+    execute "a2enmod #{params[:name]}" do
+      command "/usr/sbin/a2enmod #{params[:name]}"
+      notifies :restart, 'service[httpd]', :delayed
+      not_if do (File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.load") and
+            ((File.exists?("#{node[:apache2][:dir]}/mods-available/#{params[:name]}.conf"))?
+              (File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.conf")):(true)))
+      end
     end
-  
-    if params[:enable]
-      execute "a2enmod #{params[:name]}" do
-        command "/usr/sbin/a2enmod #{params[:name]}"
-        notifies :restart, resources(:service => "apache2"), :delayed
-        not_if do (File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.load") and
-              ((File.exists?("#{node[:apache2][:dir]}/mods-available/#{params[:name]}.conf"))?
-                (File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.conf")):(true)))
-        end
-      end
-    else
-      execute "a2dismod #{params[:name]}" do
-        command "/usr/sbin/a2dismod #{params[:name]}"
-        notifies :restart, resources(:service => "apache2"), :delayed
-        only_if do ::File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.load") end
-      end
+  else
+    execute "a2dismod #{params[:name]}" do
+      command "/usr/sbin/a2dismod #{params[:name]}"
+      notifies :restart, 'service[httpd]', :delayed
+      only_if do ::File.symlink?("#{node[:apache2][:dir]}/mods-enabled/#{params[:name]}.load") end
     end
   end
+end

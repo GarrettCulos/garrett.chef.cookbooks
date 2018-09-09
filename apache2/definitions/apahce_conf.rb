@@ -20,7 +20,7 @@
 define :apache_conf do
   template "#{node[:apache2][:dir]}/mods-available/#{params[:name]}.conf" do
     source "mods/#{params[:name]}.conf.erb"
-    notifies :restart, resources(:service => "apache2")
+    notifies :restart, 'service[httpd]'
     mode 0644
   end
 end
