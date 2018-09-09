@@ -1,4 +1,2 @@
 
-apache_module "rewrite" do
-    conf true
-end
+apache_module "rewrite"
