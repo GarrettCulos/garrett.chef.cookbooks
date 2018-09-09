@@ -21,12 +21,12 @@
 default["apache2"]["sites"]["default"] = { "port" => 8080, "servername" => "example.com", "proxy_port" => 4200 }
 
 # Where the various parts of apache are
-default[:apache][:dir]     = "/etc/httpd"
-default[:apache][:log_dir] = "/var/log/httpd"
-default[:apache][:user]    = "apache"
-default[:apache][:binary]  = "/usr/sbin/httpd"
-default[:apache][:icondir] = "/var/www/icons/"
-default[:apache][:cache_dir] = "/var/cache/httpd"
+default[:apache2][:dir]     = "/etc/httpd"
+default[:apache2][:log_dir] = "/var/log/httpd"
+default[:apache2][:user]    = "apache"
+default[:apache2][:binary]  = "/usr/sbin/httpd"
+default[:apache2][:icondir] = "/var/www/icons/"
+default[:apache2][:cache_dir] = "/var/cache/httpd"
 
 # General settings
 default[:apache2][:listen_ports] = [ "80","443" ]
