@@ -7,14 +7,14 @@ service "apache2" do
 end
 
 # enabme these mods
-include_recipe "apache2::proxy"
-include_recipe "apache2::proxy_http"
-include_recipe "apache2::proxy_ajp"
-include_recipe "apache2::rewrite"
-include_recipe "apache2::deflate"
-include_recipe "apache2::headers"
-include_recipe "apache2::proxy_connect"
-include_recipe "apache2::proxy_html"
+include_recipe "apache2::mod_proxy"
+include_recipe "apache2::mod_proxy_http"
+include_recipe "apache2::mod_proxy_ajp"
+include_recipe "apache2::mod_rewrite"
+include_recipe "apache2::mod_deflate"
+include_recipe "apache2::mod_headers"
+include_recipe "apache2::mod_proxy_connect"
+include_recipe "apache2::mod_proxy_html"
 
 node["apache2"]["sites"].each do |sitename, data|
     document_root = "/var/www/#{sitename}"
