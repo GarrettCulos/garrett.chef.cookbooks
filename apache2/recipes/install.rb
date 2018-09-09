@@ -30,7 +30,7 @@ node["apache2"]["sites"].each do |sitename, data|
         variables(
             :document_root => document_root,
             :port => data["port"],
-            :proxy_port => data["proxy_port"]
+            :proxy_port => data["proxy_port"],
             :servername => data["servername"]
         )
     end
