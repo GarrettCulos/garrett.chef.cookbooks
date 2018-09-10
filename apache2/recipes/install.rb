@@ -6,7 +6,7 @@ service "httpd" do
     action [:enable, :start]
 end
 
-# enabme these mods
+# amazon linux has mod's pre enabled
 # include_recipe "apache2::mod_proxy"
 # include_recipe "apache2::mod_proxy_http"
 # include_recipe "apache2::mod_proxy_ajp"
