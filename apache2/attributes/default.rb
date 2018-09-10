@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-default["apache2"]["sites"]["default"] = { "port" => 8080, "servername" => "example.com", "proxy_port" => 4200 }
+# default["apache2"]["sites"]["default"] = { "port" => 8080, "servername" => "example.com", "proxy_port" => 4200 }
 
 # Where the various parts of apache are
 default[:apache2][:dir]     = "/etc/httpd"
